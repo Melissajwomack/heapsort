@@ -60,11 +60,11 @@ public:
             int l = getLchild(ind);
             int r = getRchild(ind);
             if ( r != 0 || l != 0 ) {
-                if (hps[p] > hps[l] && hps[l] < hps[r]) {
+                if (hps[p] < hps[l] && hps[l] > hps[r]) {
                     swap(p, l);
                     return 2;
                 }       
-                if (hps[p] > hps[r] && hps[r] < hps[l]) {
+                if (hps[p] < hps[r] && hps[r] > hps[l]) {
                     swap(p, r);
                     return 1;
                 } else {
@@ -99,7 +99,7 @@ public:
             };
             return treeheapify(ind-1);
         } 
-        cout << "Array has been min heapified" << endl;
+        cout << "Array has been max heapified" << endl;
         displayHeap();
     }
     
@@ -111,12 +111,12 @@ public:
         int r = getRchild(tmp1);
         
         if(l > 0 && r > 0) {
-            if (hps[p] > hps[l] || hps[p] > hps[r]) {
-                if (hps[l] < hps[r] && l < hps[0] ) {
+            if (hps[p] < hps[l] || hps[p] < hps[r]) {
+                if (hps[l] > hps[r] && l < hps[0] ) {
                     swap(p, l);
                     return percolate(l);
                 }
-                if (hps[r] < hps[l] && r < hps[0]) {
+                if (hps[r] > hps[l] && r < hps[0]) {
                     swap(p, r);
                     return percolate(r);
                 };
@@ -128,7 +128,7 @@ public:
     //The function has no parameters and returns nothing
     void heapsort() {
         while(hps[0] != 0) {
-            if (hps[hps[0]] > hps[1]) {
+            if (hps[hps[0]] < hps[1]) {
                 swap(hps[0], 1);
             };
             hps[0] = hps[0]-1;
