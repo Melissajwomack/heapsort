@@ -3,6 +3,8 @@ using namespace std;
 
 class MinHeap {
 public:
+    //The hard coded array, where the index[0] is the number of members in the array from index[1] to index[n]
+    //index[0] will be used in the sorting method to separate the array into two parts: one is unsorted and one is sorted
     int hps[16] = {15, 15, 1, 12, 14, 10, 7, 4, 11, 3, 2, 13, 6, 8, 9, 5};
     
     //This variable gives the index of the first parent in the array
